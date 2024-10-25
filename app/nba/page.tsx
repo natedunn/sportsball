@@ -8,6 +8,11 @@ import {
 } from "./_components/paginate-date";
 import { ThemeSwitchButton } from "@/components/theme-switch-button";
 import { Lightbulb } from "@phosphor-icons/react/dist/ssr";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "NBA scoreboard — Sportball",
+};
 
 export default function NbaPage() {
 	return (

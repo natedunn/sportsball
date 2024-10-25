@@ -25,7 +25,7 @@ export const PreviousDayButton = () => {
 			className="flex items-center gap-2"
 		>
 			<ArrowLeft size={16} />
-			<span className="hidden sm:block">Previous Day</span>
+			<span className="hidden sm:block">Previous day</span>
 		</Button>
 	);
 };
@@ -50,7 +50,7 @@ export const NextDayButton = () => {
 			onClick={handleClick}
 			className="flex items-center gap-2"
 		>
-			<span className="hidden sm:block">Next Day</span>
+			<span className="hidden sm:block">Next day</span>
 			<ArrowRight size={16} />
 		</Button>
 	);
