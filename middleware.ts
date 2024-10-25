@@ -1,4 +1,5 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { debug } from "console";
 
 const isPublicRoute = createRouteMatcher([
 	"/sign-in(.*)",
@@ -7,11 +8,14 @@ const isPublicRoute = createRouteMatcher([
 	"/nba",
 ]);
 
-export default clerkMiddleware(async (auth, request) => {
-	if (!isPublicRoute(request)) {
-		await auth.protect();
-	}
-});
+export default clerkMiddleware(
+	async (auth, request) => {
+		if (!isPublicRoute(request)) {
+			await auth.protect();
+		}
+	},
+	{ debug: true }
+);
 
 export const config = {
 	matcher: [
