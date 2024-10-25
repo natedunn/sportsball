@@ -14,8 +14,6 @@ export const nbaRouter = router({
 		.query(async ({ input }) => {
 			const date = input?.date;
 
-			console.log(date);
-
 			const data = (await fetch(
 				`https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=${date}`,
 				{
