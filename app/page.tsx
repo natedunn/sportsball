@@ -1,5 +1,9 @@
-import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export default function Home() {
-	redirect("/nba");
+	return (
+		<div className="p-10">
+			<Link href="/nba">Go to NBA scores</Link>
+		</div>
+	);
 }
