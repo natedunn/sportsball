@@ -1,4 +1,4 @@
-import { env } from '../env/client';
+import { env } from "../env/client";
 
 // export function getBaseUrl(withProtocol: boolean | undefined = true) {
 // 	if (typeof window !== 'undefined') return '';
@@ -19,12 +19,12 @@ import { env } from '../env/client';
 // }
 
 export function getBaseUrl() {
-	if (typeof window !== 'undefined') {
-		return '';
+	if (typeof window !== "undefined") {
+		return "";
 	}
 
 	if (!!env.NEXT_PUBLIC_ROOT_DOMAIN) {
-		return `http://${env.NEXT_PUBLIC_ROOT_DOMAIN}`;
+		return env.NEXT_PUBLIC_ROOT_DOMAIN;
 	}
 
 	if (!!env.VERCEL_URL) {
