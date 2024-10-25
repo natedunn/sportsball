@@ -53,11 +53,13 @@ export const nbaRouter = router({
 							name: awayTeam.team?.name,
 							score: awayTeam.score,
 							logo: awayTeam.team?.logo,
+							color: awayTeam.team?.color,
 						},
 						home: {
 							name: homeTeam.team?.name,
 							score: homeTeam.score,
 							logo: homeTeam.team?.logo,
+							color: homeTeam.team?.color,
 						},
 					};
 				});

@@ -6,6 +6,8 @@ import {
 	NextDayButton,
 	TodayButton,
 } from "./_components/paginate-date";
+import { ThemeSwitchButton } from "@/components/theme-switch-button";
+import { Lightbulb } from "@phosphor-icons/react/dist/ssr";
 
 export default function NbaPage() {
 	return (
@@ -13,11 +15,17 @@ export default function NbaPage() {
 			<h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl">
 				<GamesHeaderText />
 			</h1>
-			<div className="flex items-center gap-4">
-				<PreviousDayButton />
-				<DatePicker />
-				<TodayButton />
-				<NextDayButton />
+			<div className="flex items-center justify-between gap-4 flex-wrap">
+				<div className="flex items-center flex-wrap gap-4">
+					<PreviousDayButton />
+					<DatePicker />
+					<TodayButton />
+					<NextDayButton />
+				</div>
+				<ThemeSwitchButton>
+					<Lightbulb size={16} />
+					<span>Theme</span>
+				</ThemeSwitchButton>
 			</div>
 			<AllGames />
 		</div>

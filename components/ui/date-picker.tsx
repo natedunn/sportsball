@@ -27,7 +27,7 @@ export function DatePicker() {
 					)}
 				>
 					<CalendarBlank size={16} />
-					Pick a date
+					<span className="hidden sm:block">Pick a date</span>
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className="w-auto p-0">

@@ -51,8 +51,8 @@ export default function RootLayout({
 									</SignedOut>
 									<SignedIn>
 										<UserButton />
-									</SignedIn>
-									<ThemeSwitchButton>Toggle</ThemeSwitchButton> */}
+									</SignedIn> */}
+									{/* <ThemeSwitchButton>Toggle</ThemeSwitchButton> */}
 									{children}
 								</main>
 							</ThemeProvider>

@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useTimestamp } from "@/lib/nuqs/use-timestamp";
-import { ArrowLeft, ArrowRight, CalendarDot } from "@phosphor-icons/react";
+import { ArrowLeft, ArrowRight, CaretLineDown } from "@phosphor-icons/react";
 
 export const PreviousDayButton = () => {
 	const { date, setDate } = useTimestamp();
@@ -25,7 +25,7 @@ export const PreviousDayButton = () => {
 			className="flex items-center gap-2"
 		>
 			<ArrowLeft size={16} />
-			<span>Previous Day</span>
+			<span className="hidden sm:block">Previous Day</span>
 		</Button>
 	);
 };
@@ -50,7 +50,7 @@ export const NextDayButton = () => {
 			onClick={handleClick}
 			className="flex items-center gap-2"
 		>
-			<span>Next Day</span>
+			<span className="hidden sm:block">Next Day</span>
 			<ArrowRight size={16} />
 		</Button>
 	);
@@ -69,8 +69,8 @@ export const TodayButton = () => {
 			onClick={handleClick}
 			className="flex items-center gap-2"
 		>
-			<CalendarDot size={16} />
-			<span>Today</span>
+			<CaretLineDown size={16} />
+			<span className="hidden sm:block">Today</span>
 		</Button>
 	);
 };
