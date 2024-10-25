@@ -24,7 +24,7 @@ export const AllGames = () => {
 					key={game?.uid}
 					className="flex gap-2 p-2 border border-border rounded-xl bg-muted/30"
 				>
-					<div className="overflow-hidden relative flex gap-2 bg-card rounded-lg w-full border dark:border-neutral-700 border-neutral-300 justify-between">
+					<div className="overflow-hidden relative flex gap-2 bg-card rounded-lg w-full border border-border justify-between">
 						<Competitor team={game.away} homeAway="away" />
 						<div className="flex items-center flex-col justify-center gap-2">
 							{(game.state === "in" || game.state === "post") && (
