@@ -4,6 +4,7 @@ import { useTimestamp } from "@/lib/nuqs/use-timestamp";
 import { api } from "@/lib/trpc/clients/client";
 import { Points } from "./Points";
 import { Competitor } from "./Competitor";
+import { parseCustomDateFormat, playDateFormat } from "@/lib/utils/date";
 
 export const AllGames = () => {
 	const { apiFormat } = useTimestamp();
@@ -34,7 +35,13 @@ export const AllGames = () => {
 									state={game.state}
 								/>
 							)}
-							<span className="text-muted-foreground">{game.time.detail}</span>
+							{game.time.detail && (
+								<span className="text-muted-foreground">
+									{game.time.detail.endsWith("EDT")
+										? playDateFormat(parseCustomDateFormat(game.time.detail))
+										: game.time.detail}
+								</span>
+							)}
 						</div>
 						<Competitor team={game.home} homeAway="home" />
 					</div>
