@@ -11,6 +11,8 @@ type CompetitorProps = {
 };
 
 export const Competitor = ({ team, homeAway }: CompetitorProps) => {
+	const isJazz = team.id === "s:40~l:46~t:26";
+
 	return (
 		<div className="overflow-hidden relative flex flex-col gap-2 items-center p-4 md:min-w-[130px]">
 			<style jsx>{`
@@ -27,7 +29,7 @@ export const Competitor = ({ team, homeAway }: CompetitorProps) => {
 			<div className="z-10 flex flex-col gap-2 items-center justify-center h-full">
 				{team.logo && team.name && (
 					<Image
-						className="w-8 sm:w-10 md:w-12"
+						className={cn("w-8 sm:w-10 md:w-12", isJazz && "dark:invert")}
 						src={team.logo}
 						alt={team.name}
 						width={48}

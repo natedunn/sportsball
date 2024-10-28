@@ -360,7 +360,7 @@ const nbaTeams = [
 		teamId: "s:40~l:46~t:23",
 		primaryColor: "5a2d81",
 		slug: "sacramento-kings",
-		darkColor: "5a2d81",
+		darkColor: "63727A",
 		lightColor: "5a2d81",
 	},
 	{
