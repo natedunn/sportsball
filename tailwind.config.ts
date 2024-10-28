@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 import animatePlugin from "tailwindcss-animate";
 
 const maxWidth = "50rem";
@@ -72,6 +73,23 @@ const config: Config = {
 			},
 		},
 	},
-	plugins: [animatePlugin],
+	plugins: [
+		plugin(function ({
+			addVariant,
+		}: {
+			addVariant: (name: string, variants: string[]) => void;
+		}) {
+			addVariant("hocus", ["&:hover", "&:focus"]);
+			addVariant("group-hocus", [
+				":merge(.group):hover &",
+				":merge(.group):focus &",
+			]);
+			addVariant("factive", ["&:active", "&:focus"]);
+			addVariant("all", ["&:active", "&:focus", "&:hover"]);
+			addVariant("list", [".list-primary &"]);
+			addVariant("light", ["html.light &"]);
+		}),
+		animatePlugin,
+	],
 };
 export default config;
