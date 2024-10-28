@@ -8,6 +8,7 @@ import { ThemeProvider } from "next-themes";
 import { TrpcProvider } from "@/lib/trpc/TrpcProvider";
 import { headers } from "next/headers";
 import { ClerkProvider } from "@/lib/auth/ClerkProvider";
+import Link from "next/link";
 // import { ThemeSwitchButton } from "@/components/theme-switch-button";
 
 const geistSans = localFont({
@@ -45,6 +46,31 @@ export default function RootLayout({
 								defaultTheme="system"
 								enableSystem
 							>
+								<nav className="border-b border-border bg-background">
+									<div className="container flex items-center justify-between">
+										<Link
+											className="inline-flex justify-center gap-2 py-2 px-2 group"
+											href="/"
+										>
+											<span className="text-lg leading-none py-0.5">◍</span>
+											<span className="group-hocus:underline">Sportsball</span>
+										</Link>
+										<div className="flex items-center gap-3">
+											<Link
+												className="inline-flex py-2 px-2 hocus:underline"
+												href="/nba"
+											>
+												NBA
+											</Link>
+											<Link
+												className="inline-flex py-2 px-2 hocus:underline"
+												href="/nfl"
+											>
+												NFL
+											</Link>
+										</div>
+									</div>
+								</nav>
 								<main className="container">
 									{/* <SignedOut>
 										<SignInButton />
