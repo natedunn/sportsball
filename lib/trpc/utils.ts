@@ -18,7 +18,7 @@ export function getTRPCUrl() {
 	// }
 	// When rendering on the server, we return an absolute URL
 
-	return `https://kino.local/api/trpc`;
+	return `${env.NEXT_PUBLIC_ROOT_DOMAIN}/api/trpc`;
 
 	// // reference for vercel.com
 	// if (process.env.VERCEL_URL) {

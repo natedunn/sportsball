@@ -3,6 +3,6 @@ import { defaultColumns } from "../_shared";
 
 export const favoriteTeam = pgTable("favorite_team", {
 	...defaultColumns(),
-	teamId: varchar().notNull(),
 	userId: varchar().notNull(),
+	teamId: varchar().notNull(),
 });
