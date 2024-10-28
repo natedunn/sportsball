@@ -1,2 +1,7 @@
-export * from "./favorite-team.table";
-export * from "./nba-team.table";
+import { favoriteTeam } from "./favorite-team.table";
+import { nbaTeam } from "./nba-team.table";
+
+export const tables = {
+	nbaTeam,
+	favoriteTeam,
+};

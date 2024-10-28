@@ -6,7 +6,7 @@ import { drizzle } from "drizzle-orm/neon-serverless";
 
 import { env } from "@/lib/env/server";
 
-import * as tables from "./tables";
+import { tables } from "./tables";
 
 // Serverless
 const connection = new Pool({ connectionString: env.DATABASE_URL });

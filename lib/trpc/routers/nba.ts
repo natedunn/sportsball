@@ -4,6 +4,8 @@ import type { NbaScoreboardResponse } from "@/lib/schema/external/nba-scoreboard
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 
+import nbaConfig from "@/config/nba-teams";
+
 export const nbaRouter = router({
 	allGames: noAuthProcedure
 		.input(
@@ -50,16 +52,36 @@ export const nbaRouter = router({
 							detail: event.status.type.detail,
 						},
 						away: {
-							name: awayTeam.team?.name,
+							id: awayTeam.team.uid,
+							name: awayTeam.team.name,
 							score: awayTeam.score,
-							logo: awayTeam.team?.logo,
-							color: awayTeam.team?.color,
+							logo: awayTeam.team.logo,
+							primaryColor: awayTeam.team.color,
+							darkColor:
+								nbaConfig.find((x) => x.teamId === awayTeam.team.uid)
+									?.darkColor ?? "000000",
+							lightColor:
+								nbaConfig.find((x) => x.teamId === awayTeam.team.uid)
+									?.lightColor ?? "000000",
+							seasonRecord:
+								awayTeam.records?.find((record) => record.type === "total")
+									?.summary ?? "N/A",
 						},
 						home: {
+							id: homeTeam.team.uid,
 							name: homeTeam.team?.name,
 							score: homeTeam.score,
 							logo: homeTeam.team?.logo,
-							color: homeTeam.team?.color,
+							primaryColor: homeTeam.team.color,
+							darkColor:
+								nbaConfig.find((x) => x.teamId === homeTeam.team.uid)
+									?.darkColor ?? "000000",
+							lightColor:
+								nbaConfig.find((x) => x.teamId === homeTeam.team.uid)
+									?.lightColor ?? "000000",
+							seasonRecord:
+								homeTeam.records?.find((record) => record.type === "total")
+									?.summary ?? "N/A",
 						},
 					};
 				});

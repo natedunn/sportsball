@@ -309,7 +309,7 @@ export const AthleteSchema = z.object({
 export type Athlete = z.infer<typeof AthleteSchema>;
 
 export const CompetitorTeamSchema = z.object({
-	id: z.string().optional(),
+	id: z.string(),
 	uid: z.string().optional(),
 	location: z.string().optional(),
 	name: z.string().optional(),
@@ -470,7 +470,7 @@ export const CompetitorSchema = z.object({
 	type: TypeElementSchema.optional(),
 	order: z.number().optional(),
 	homeAway: MarketEnumSchema,
-	team: CompetitorTeamSchema.optional(),
+	team: CompetitorTeamSchema,
 	score: z.string(),
 	linescores: z.array(LinescoreSchema).optional(),
 	statistics: z.array(StatisticSchema).optional(),

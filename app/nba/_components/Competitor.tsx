@@ -1,5 +1,5 @@
 import Image from "next/image";
-import FlickeringGrid from "@/components/ui/flickering-grid";
+import { FlickeringTeamColorGrid } from "./flickering-team-color-grid";
 import type { API } from "@/lib/trpc/routers/_app";
 import { cn } from "@/lib/utils";
 
@@ -13,23 +13,17 @@ type CompetitorProps = {
 export const Competitor = ({ team, homeAway }: CompetitorProps) => {
 	return (
 		<div className="overflow-hidden relative flex flex-col gap-2 items-center p-4 md:min-w-[130px]">
+			<style jsx>{`
+				.
+			`}</style>
 			<div
 				className={cn(
-					"z-10 absolute inset-0 from-card to-transparent",
-					homeAway === "home" && "bg-gradient-to-r",
-					homeAway === "away" && "bg-gradient-to-l"
+					"z-10 absolute inset-0 from-card to-transparent from-40%",
+					homeAway === "home" && "bg-gradient-to-tr",
+					homeAway === "away" && "bg-gradient-to-tl"
 				)}
 			></div>
-			<FlickeringGrid
-				className="z-0 absolute inset-0"
-				squareSize={4}
-				gridGap={6}
-				color={`#${team.color}`}
-				maxOpacity={0.5}
-				flickerChance={0.1}
-				height={130}
-				width={130}
-			/>
+			<FlickeringTeamColorGrid dark={team.darkColor} light={team.lightColor} />
 			<div className="z-10 flex flex-col gap-2 items-center justify-center h-full">
 				{team.logo && team.name && (
 					<Image
@@ -40,7 +34,10 @@ export const Competitor = ({ team, homeAway }: CompetitorProps) => {
 						height={48}
 					/>
 				)}
-				<span className="text-sm font-bold">{team.name}</span>
+				<div className="flex flex-col items-center">
+					<span className="text-sm font-bold">{team.name}</span>
+					<span className="text-sm font-mono">{team.seasonRecord}</span>
+				</div>
 			</div>
 		</div>
 	);

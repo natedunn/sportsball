@@ -16,7 +16,7 @@ export const Point = ({
 		<div
 			className={cn(
 				"flex gap-2 items-center text-2xl sm:text-3xl md:text-4xl font-bold font-mono",
-				state === "winner" && "underline",
+				state === "winner" && "",
 				state === "loser" && "opacity-50"
 			)}
 		>
