@@ -1,5 +1,5 @@
 import { DatePicker } from "@/components/ui/date-picker";
-import { AllGames } from "../_components/all-nba";
+import { AllGames } from "../_components/all-nfl";
 import { GamesHeaderText } from "../_components/games-header-text";
 import {
 	PreviousDayButton,
@@ -11,7 +11,7 @@ import { Lightbulb } from "@phosphor-icons/react/dist/ssr";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "NBA scoreboard — Sportball",
+	title: "NFL scoreboard — Sportball",
 };
 
 export default function NbaPage() {

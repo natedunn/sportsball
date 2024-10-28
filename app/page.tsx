@@ -38,18 +38,24 @@ export default function Home() {
 					All the Sportsballing, none of the bullshit.
 				</h1>
 				<p className="mt-8 text-pretty text-xl font-medium text-gray-400 sm:text-xl/8">
-					Check scores and updates for your favorite leagues like NBA,{" "}
-					<span className="line-through">NFL</span>,{" "}
+					Check scores and updates for your favorite leagues like NBA, NFL,{" "}
 					<span className="line-through">MLB</span>,{" "}
 					<span className="line-through">WNBA</span>, and{" "}
 					<span className="line-through">more</span>.
 				</p>
-				<div className="mt-8">
+				<div className="mt-8 inline-flex items-center gap-4">
 					<Link
 						className="rounded-lg bg-muted px-4 py-2 hover:underline inline-flex items-center gap-2 hover:bg-muted/80 text-lg"
 						href="/nba"
 					>
-						<span>Go look at things</span>
+						<span>NBA scores</span>
+						<ArrowRight size={16} />
+					</Link>
+					<Link
+						className="rounded-lg bg-muted px-4 py-2 hover:underline inline-flex items-center gap-2 hover:bg-muted/80 text-lg"
+						href="/nfl"
+					>
+						<span>NFL scores</span>
 						<ArrowRight size={16} />
 					</Link>
 				</div>

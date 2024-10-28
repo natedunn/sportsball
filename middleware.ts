@@ -5,6 +5,7 @@ const isPublicRoute = createRouteMatcher([
 	"/sign-up(.*)",
 	"/",
 	"/nba",
+	"/nfl",
 	"/api/trpc(.*)",
 ]);
 

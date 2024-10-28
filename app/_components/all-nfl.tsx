@@ -2,14 +2,14 @@
 
 import { useTimestamp } from "@/lib/nuqs/use-timestamp";
 import { api } from "@/lib/trpc/clients/client";
-import { Points } from "./Points";
-import { Competitor } from "./Competitor";
+import { Points } from "./points";
+import { Competitor } from "./competitor";
 import { parseCustomDateFormat, playDateFormat } from "@/lib/utils/date";
 
 export const AllGames = () => {
 	const { apiFormat } = useTimestamp();
 
-	const { data } = api.nba.allGames.useQuery(
+	const { data } = api.nfl.allGames.useQuery(
 		{
 			date: apiFormat,
 		},
