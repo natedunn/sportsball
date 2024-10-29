@@ -9,7 +9,8 @@ import { TrpcProvider } from "@/lib/trpc/TrpcProvider";
 import { headers } from "next/headers";
 import { ClerkProvider } from "@/lib/auth/ClerkProvider";
 import Link from "next/link";
-// import { ThemeSwitchButton } from "@/components/theme-switch-button";
+import { ThemeSwitchButton } from "@/components/theme-switch-button";
+import { Sun } from "lucide-react";
 
 const geistSans = localFont({
 	src: "./fonts/GeistVF.woff",
@@ -68,19 +69,15 @@ export default function RootLayout({
 											>
 												NFL
 											</Link>
+											<div className="text-muted-foreground/50">|</div>
+											<ThemeSwitchButton className="flex items-center gap-2 group">
+												<Sun size={16} />
+												<span className="group-hocus:underline">Theme</span>
+											</ThemeSwitchButton>
 										</div>
 									</div>
 								</nav>
-								<main className="container">
-									{/* <SignedOut>
-										<SignInButton />
-									</SignedOut>
-									<SignedIn>
-										<UserButton />
-									</SignedIn> */}
-									{/* <ThemeSwitchButton>Toggle</ThemeSwitchButton> */}
-									{children}
-								</main>
+								<main className="container">{children}</main>
 							</ThemeProvider>
 						</TrpcProvider>
 					</NuqsAdapter>

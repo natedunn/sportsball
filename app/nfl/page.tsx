@@ -6,8 +6,6 @@ import {
 	NextDayButton,
 	TodayButton,
 } from "../_components/paginate-date";
-import { ThemeSwitchButton } from "@/components/theme-switch-button";
-import { Lightbulb } from "@phosphor-icons/react/dist/ssr";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -27,10 +25,6 @@ export default function NbaPage() {
 					<TodayButton />
 					<NextDayButton />
 				</div>
-				<ThemeSwitchButton>
-					<Lightbulb size={16} />
-					<span>Theme</span>
-				</ThemeSwitchButton>
 			</div>
 			<AllGames />
 		</div>

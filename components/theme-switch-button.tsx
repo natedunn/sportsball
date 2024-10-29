@@ -3,7 +3,6 @@
 import { ExtendedComponentProps } from "@/lib/utils/types";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 
 type ThemeSwitchButtonProps = ExtendedComponentProps<
 	"button",
@@ -30,8 +29,8 @@ export const ThemeSwitchButton = (props: ThemeSwitchButtonProps) => {
 	};
 
 	return (
-		<Button variant="outline" {...props} onClick={handleToggle}>
+		<button {...props} onClick={handleToggle}>
 			{props.children}
-		</Button>
+		</button>
 	);
 };
