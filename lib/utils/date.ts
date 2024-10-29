@@ -20,7 +20,7 @@ const getMonthNumber = (monthName: string): number => {
 	return months[monthName];
 };
 
-export const parseCustomDateFormat = (dateString: string): Date => {
+export const detailToDate = (dateString: string): Date => {
 	const regex =
 		/^(?:\w+), (\w+) (\d+)(?:st|nd|rd|th) at (\d+):(\d+) (AM|PM) EDT$/;
 
@@ -69,7 +69,7 @@ const getOrdinalSuffix = (day: number): string => {
 	}
 };
 
-export const playDateFormat = (date: Date): string => {
+export const formatGameDate = (date: Date, dayOf: boolean = false): string => {
 	// Get user's local timezone
 	const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 	const formatOptions = { timeZone };
@@ -100,5 +100,10 @@ export const playDateFormat = (date: Date): string => {
 		.split(" ")[2];
 
 	const yearSuffix = dateYear !== currentYear ? `, ${dateYear}` : "";
+
+	if (dayOf) {
+		return `${time} ${tz}`;
+	}
+
 	return `${weekday}, ${month} ${day}${suffix}${yearSuffix} at ${time} ${tz}`;
 };
