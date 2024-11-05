@@ -11,8 +11,8 @@ export const nbaRouter = router({
 	allGames: noAuthProcedure
 		.use(
 			rateLimit({
-				tokens: 100,
-				duration: "60 s",
+				tokens: 50,
+				duration: "30 s",
 			})
 		)
 		.input(
