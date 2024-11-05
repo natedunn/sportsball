@@ -22,9 +22,6 @@ export const nbaRouter = router({
 					headers: {
 						"Content-Type": "application/json",
 					},
-					next: {
-						revalidate: 10,
-					},
 				}
 			).then((res) => res.json())) as NbaScoreboardResponse;
 
