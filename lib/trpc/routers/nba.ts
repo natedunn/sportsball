@@ -5,9 +5,16 @@ import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 
 import nbaConfig from "@/config/nba-teams";
+import { rateLimit } from "../middleware/rate-limit";
 
 export const nbaRouter = router({
 	allGames: noAuthProcedure
+		.use(
+			rateLimit({
+				tokens: 100,
+				duration: "60 s",
+			})
+		)
 		.input(
 			z.object({
 				date: z.string(),
@@ -85,6 +92,6 @@ export const nbaRouter = router({
 				return games;
 			}
 
-			return null;
+			return [];
 		}),
 });

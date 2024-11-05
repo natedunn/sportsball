@@ -6,11 +6,27 @@ import { Points } from "./points";
 import { Competitor } from "./competitor";
 import { detailToDate, formatGameDate } from "@/lib/utils/date";
 import { Empty } from "@phosphor-icons/react";
+import React, { PropsWithChildren, useEffect } from "react";
+import { AlertCircle, Loader, LucideIcon } from "lucide-react";
+
+const Message = ({
+	children,
+	icon: Icon,
+}: PropsWithChildren<{ icon: LucideIcon }>) => (
+	<div className="rounded-lg bg-card border-border/50 border p-6">
+		<div className="flex items-center gap-4 justify-center">
+			<Icon size={32} className="text-muted-foreground/50" />
+			<span className="text-2xl font-bold text-muted-foreground/50">
+				{children}
+			</span>
+		</div>
+	</div>
+);
 
 export const AllGames = () => {
 	const { apiFormat } = useTimestamp();
 
-	const { data } = api.nba.allGames.useQuery(
+	const { data, isLoading, isError, error } = api.nba.allGames.useQuery(
 		{
 			date: apiFormat,
 		},
@@ -19,9 +35,18 @@ export const AllGames = () => {
 		}
 	);
 
+	useEffect(() => {
+		console.log("error", error);
+	}, [error]);
+
 	return (
 		<div className="flex flex-col gap-4">
-			{data && data.length > 0 ? (
+			{isError ? (
+				<Message icon={AlertCircle}>Error: {error.data?.code}</Message>
+			) : null}
+			{isLoading ? (
+				<Message icon={Loader}>Loading games...</Message>
+			) : data && data.length > 0 ? (
 				data.map((game) => (
 					<div
 						key={game?.uid}
@@ -49,16 +74,9 @@ export const AllGames = () => {
 						</div>
 					</div>
 				))
-			) : (
-				<div className="rounded-lg bg-card border-border/50 border p-6">
-					<div className="flex items-center gap-4 justify-center">
-						<Empty size={32} className="text-muted-foreground/50" />
-						<span className="text-2xl font-bold text-muted-foreground/50">
-							No games scheduled
-						</span>
-					</div>
-				</div>
-			)}
+			) : !isError ? (
+				<Message icon={Empty}>No games scheduled</Message>
+			) : null}
 		</div>
 	);
 };

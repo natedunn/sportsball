@@ -9,7 +9,11 @@ export const env = createEnv({
 		NEXT_PUBLIC_LOGGER_RESULT_LENGTH: z.coerce.number().int().min(0).optional(),
 	},
 	server: {
+		// Database
 		DATABASE_URL: z.string().url().min(1),
+		// Upstash
+		UPSTASH_REDIS_REST_URL: z.string().min(1),
+		UPSTASH_REDIS_REST_TOKEN: z.string().min(1),
 	},
 	experimental__runtimeEnv: {
 		NEXT_PUBLIC_ROOT_DOMAIN: process.env.NEXT_PUBLIC_ROOT_DOMAIN,

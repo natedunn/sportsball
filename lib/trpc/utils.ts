@@ -5,32 +5,42 @@ import { loggerLink } from "@trpc/client";
 
 import { env } from "@/lib/env/client";
 
-// import { getBaseUrl } from '@/lib/util/get-base-url';
+export type apiDataType<DataType> = {
+	code?: string | number | null;
+} & (
+	| {
+			data: DataType;
+			success: true;
+			message?: string | null;
+	  }
+	| {
+			data: DataType | null;
+			success: false;
+			message: string;
+	  }
+);
 
-// export function getTRPCUrl() {
-// 	return getBaseUrl() + '/api/trpc';
-// }
+/**
+ * Structure data returns consistently
+ *
+ * @param apiDataType
+ */
+export const apiData = <DataType = never>(props: apiDataType<DataType>) => {
+	const { data = null, success, message = null, code = null } = props;
+	if (!success && !message) {
+		throw new Error("Message is required when success is false");
+	}
+
+	return {
+		data: data as DataType,
+		success,
+		message,
+		code,
+	};
+};
 
 export function getTRPCUrl() {
-	// if (typeof window !== 'undefined') {
-	// 	// In the browser, we return a relative URL
-	// 	return '/api/trpc';
-	// }
-	// When rendering on the server, we return an absolute URL
-
 	return `${env.NEXT_PUBLIC_ROOT_DOMAIN}/api/trpc`;
-
-	// // reference for vercel.com
-	// if (process.env.VERCEL_URL) {
-	// 	return `https://${process.env.VERCEL_URL}/api/trpc`;
-	// }
-
-	// if (env.NEXT_PUBLIC_ROOT_DOMAIN) {
-	// 	return `https://${env.NEXT_PUBLIC_ROOT_DOMAIN}/api/trpc`;
-	// }
-
-	// // assume localhost
-	// return `http://localhost:${process.env.PORT ?? 3000}/api/trpc`;
 }
 
 export const skipStream = (op: Operation) => {
