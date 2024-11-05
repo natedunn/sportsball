@@ -1,28 +1,9 @@
-type MonthMap = {
-	[key: string]: number;
-};
-
-const getMonthNumber = (monthName: string): number => {
-	const months: MonthMap = {
-		January: 0,
-		February: 1,
-		March: 2,
-		April: 3,
-		May: 4,
-		June: 5,
-		July: 6,
-		August: 7,
-		September: 8,
-		October: 9,
-		November: 10,
-		December: 11,
-	};
-	return months[monthName];
-};
+import { parseISO } from "date-fns";
+import { getTimezoneOffset } from "date-fns-tz";
 
 export const detailToDate = (dateString: string): Date => {
 	const regex =
-		/^(?:\w+), (\w+) (\d+)(?:st|nd|rd|th) at (\d+):(\d+) (AM|PM) EDT$/;
+		/^(?:\w+), (\w+) (\d+)(?:st|nd|rd|th) at (\d+):(\d+) (AM|PM) (.+)$/;
 
 	const match = dateString.match(regex);
 	if (!match) {
@@ -31,7 +12,7 @@ export const detailToDate = (dateString: string): Date => {
 		);
 	}
 
-	const [, month, day, hours, minutes, period] = match;
+	const [, month, day, hours, minutes, period, timezone] = match;
 
 	// Convert to 24-hour format
 	let hour = parseInt(hours);
@@ -43,17 +24,33 @@ export const detailToDate = (dateString: string): Date => {
 
 	const currentYear = new Date().getFullYear();
 
-	// Create date in EDT
-	const date = new Date(
-		`${currentYear}-${(getMonthNumber(month) + 1)
+	// Parse the date string with the detected timezone
+	const dateWithTimezone = parseISO(
+		`${currentYear}-${getMonthNumber(month) + 1}-${day.padStart(2, "0")}T${hour
 			.toString()
-			.padStart(2, "0")}-${day.padStart(2, "0")}T${hour
-			.toString()
-			.padStart(2, "0")}:${minutes}:00-04:00`
+			.padStart(2, "0")}:${minutes}:00${getTimezoneOffset(timezone)}`
 	);
 
-	return date;
+	return dateWithTimezone;
 };
+
+function getMonthNumber(monthName: string): number {
+	const months = [
+		"January",
+		"February",
+		"March",
+		"April",
+		"May",
+		"June",
+		"July",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December",
+	];
+	return months.indexOf(monthName);
+}
 
 const getOrdinalSuffix = (day: number): string => {
 	if (day > 3 && day < 21) return "th";
