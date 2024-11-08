@@ -4,7 +4,7 @@ import { useTimestamp } from "@/lib/nuqs/use-timestamp";
 import { api } from "@/lib/trpc/clients/client";
 import { Points } from "./points";
 import { Competitor } from "./competitor";
-import { detailToDate, formatGameDate } from "@/lib/utils/date";
+import { formatGameDate } from "@/lib/utils/date";
 import { Empty } from "@phosphor-icons/react";
 
 export const AllGames = () => {
@@ -39,8 +39,8 @@ export const AllGames = () => {
 								)}
 								{game.time.detail && (
 									<span className="text-muted-foreground">
-										{game.state === "pre"
-											? formatGameDate(detailToDate(game.time.detail))
+										{game.state === "pre" && game.time.start
+											? formatGameDate(new Date(game.time.start), false)
 											: game.time.detail}
 									</span>
 								)}

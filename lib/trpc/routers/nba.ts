@@ -53,6 +53,7 @@ export const nbaRouter = router({
 						uid: event.uid,
 						state: event.status.type.state,
 						time: {
+							start: event.competitions[0].startDate,
 							detail: event.status.type.detail,
 						},
 						away: {
