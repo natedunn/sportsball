@@ -25,12 +25,14 @@
 		"@tailwindcss/typography": "^0.5.15",
 		"@types/eslint": "^9.6.0",
 		"autoprefixer": "^10.4.20",
+		"bits-ui": "1.0.0-next.59",
 		"clsx": "^2.1.1",
 		"drizzle-kit": "^0.22.0",
 		"eslint": "^9.7.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.36.0",
 		"globals": "^15.0.0",
+		"lucide-svelte": "^0.460.1",
 		"prettier": "^3.3.2",
 		"prettier-plugin-svelte": "^3.2.6",
 		"prettier-plugin-tailwindcss": "^0.6.5",
@@ -51,11 +53,11 @@
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
 		"@tanstack/svelte-query": "https://pkg.pr.new/@tanstack/svelte-query@28f98f9560ff5878fd839807ead5324a7b9328c4",
-		"bits-ui": "1.0.0-next.54",
 		"date-fns": "^4.1.0",
 		"date-fns-tz": "^3.2.0",
 		"drizzle-orm": "^0.33.0",
 		"kit-query-params": "^0.0.26",
+		"mode-watcher": "^0.4.1",
 		"zod": "^3.23.8"
 	}
 }

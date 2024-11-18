@@ -1,9 +1,13 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
 	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
+	import { browser } from '$app/environment';
+	import { ModeWatcher } from 'mode-watcher';
+
 	import '../app.css';
 
-	let { children, data } = $props();
+	import ModeDropdown from '$components/mode-dropdown.svelte';
+
+	let { children } = $props();
 
 	const queryClient = new QueryClient({
 		defaultOptions: {
@@ -16,6 +20,10 @@
 
 <QueryClientProvider client={queryClient}>
 	<div class="container">
-		{@render children()}
+		<ModeWatcher />
+		<div>
+			<ModeDropdown />
+			{@render children()}
+		</div>
 	</div>
 </QueryClientProvider>

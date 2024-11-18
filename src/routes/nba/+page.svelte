@@ -2,10 +2,11 @@
 	import type { GamesByDateResponse } from '../api/nba/games-by-date/[date]/utils';
 
 	import { createQuery } from '@tanstack/svelte-query';
-	import { formatDateToString, moveDate } from '$lib/utils/date';
+	import DatePagination from '$lib/components/date-pagination.svelte';
+	import { formatDateToString } from '$lib/utils/date';
 	import { queryParamsState } from 'kit-query-params';
 
-	import AllGames from './_components/all-games.svelte';
+	import Scoreboard from './_components/scoreboard.svelte';
 
 	const params = queryParamsState({
 		schema: {
@@ -17,9 +18,6 @@
 	let date = $derived(
 		formatDateToString(params.date ?? new Date().toISOString().split('T')[0], 'YYYYMMDD')
 	);
-	let nextDay = $derived(moveDate(date, 'next'));
-	let prevDay = $derived(moveDate(date, 'prev'));
-	let todayDay = $derived(moveDate(date, 'today'));
 
 	const query = createQuery(() => ({
 		queryKey: ['nbaGamesByDate', date],
@@ -35,17 +33,7 @@
 <div class="flex flex-col gap-4 py-12">
 	<h1 class="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl">Games for today</h1>
 	<div class="flex flex-col flex-wrap items-center justify-between gap-4">
-		<div>
-			<a href={`/nba?date=${prevDay}`}>Previous</a>
-			<a href={`/nba?date=${todayDay}`}>Today</a>
-			<a
-				onclick={(e) => {
-					console.log(e.currentTarget);
-					e.currentTarget?.focus();
-				}}
-				href={`/nba?date=${nextDay}`}>Next</a
-			>
-		</div>
+		<DatePagination {date} />
 		{#if query.isLoading}
 			<div class="flex flex-col items-center justify-center gap-4">
 				<div class="text-gray-500">Loading games...</div>
@@ -58,7 +46,11 @@
 		{:else}
 			{@const games = query.data}
 			{#if !!games && games.length > 0}
-				<AllGames {games} />
+				<div class="flex w-full flex-col gap-4">
+					{#each games as game (game.id)}
+						<Scoreboard {game} />
+					{/each}
+				</div>
 			{:else}
 				<div class="flex flex-col items-center justify-center gap-4">
 					<div class="text-gray-500">No games found</div>

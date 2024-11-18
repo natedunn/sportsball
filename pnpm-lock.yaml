@@ -26,9 +26,6 @@ importers:
       '@tanstack/svelte-query':
         specifier: https://pkg.pr.new/@tanstack/svelte-query@28f98f9560ff5878fd839807ead5324a7b9328c4
         version: https://pkg.pr.new/@tanstack/svelte-query@28f98f9560ff5878fd839807ead5324a7b9328c4(svelte@5.1.15)
-      bits-ui:
-        specifier: 1.0.0-next.54
-        version: 1.0.0-next.54(svelte@5.1.15)
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
@@ -41,6 +38,9 @@ importers:
       kit-query-params:
         specifier: ^0.0.26
         version: 0.0.26(svelte@5.1.15)
+      mode-watcher:
+        specifier: ^0.4.1
+        version: 0.4.1(svelte@5.1.15)
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -72,6 +72,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.48)
+      bits-ui:
+        specifier: 1.0.0-next.59
+        version: 1.0.0-next.59(svelte@5.1.15)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -90,6 +93,9 @@ importers:
       globals:
         specifier: ^15.0.0
         version: 15.12.0
+      lucide-svelte:
+        specifier: ^0.460.1
+        version: 0.460.1(svelte@5.1.15)
       prettier:
         specifier: ^3.3.2
         version: 3.3.3
@@ -1115,8 +1121,8 @@ packages:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
     engines: {node: '>=8'}
 
-  bits-ui@1.0.0-next.54:
-    resolution: {integrity: sha512-Oazky8A9MBfqPHQEk1+c8G4Hjgqva4oUlTnBpo7Qg7h/azpmUFPRCiADUMKv2v6An1MMOuLx9dDvJ4AcwS+Elg==}
+  bits-ui@1.0.0-next.59:
+    resolution: {integrity: sha512-MbrHC+ieHI5efe3N+KF4o865nGKKMX9yiUMgVrzX8TLKYw9Q+w0ueZzbenstB2g+yuNALTuNg/2wh6StB+lV+A==}
     engines: {node: '>=18', pnpm: '>=8.7.0'}
     peerDependencies:
       svelte: ^5.0.0-next.1
@@ -1664,6 +1670,11 @@ packages:
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
+  lucide-svelte@0.460.1:
+    resolution: {integrity: sha512-guJjJSeWlKivsEG51Xg41egunBMJcobhDmkLv/NYTXmXyCEwxMf1A+HX7RvDEKiXbXYgtLImih67tI08MSUOkA==}
+    peerDependencies:
+      svelte: ^3 || ^4 || ^5.0.0-next.42
+
   magic-string@0.30.12:
     resolution: {integrity: sha512-Ea8I3sQMVXr8JhN4z+H/d8zwo+tYDgHE9+5G4Wnrwhs0gaK9fXTKx0Tw5Xwsd/bCPTTZNRAdpyzvoeORe9LYpw==}
 
@@ -1689,6 +1700,11 @@ packages:
   minipass@7.1.2:
     resolution: {integrity: sha512-qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw==}
     engines: {node: '>=16 || 14 >=14.17'}
+
+  mode-watcher@0.4.1:
+    resolution: {integrity: sha512-bNC+1NXmwEFZtziCdZSgP7HFQTpqJPcQn9GwwJQGSf6SBF3neEPYV1uRwkYuAQwbsvsXIYtzaqgedDzJ7D1mhg==}
+    peerDependencies:
+      svelte: ^4.0.0 || ^5.0.0-next.1
 
   mri@1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
@@ -3048,7 +3064,7 @@ snapshots:
 
   binary-extensions@2.3.0: {}
 
-  bits-ui@1.0.0-next.54(svelte@5.1.15):
+  bits-ui@1.0.0-next.59(svelte@5.1.15):
     dependencies:
       '@floating-ui/core': 1.6.8
       '@floating-ui/dom': 1.6.12
@@ -3560,6 +3576,10 @@ snapshots:
 
   lru-cache@10.4.3: {}
 
+  lucide-svelte@0.460.1(svelte@5.1.15):
+    dependencies:
+      svelte: 5.1.15
+
   magic-string@0.30.12:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
@@ -3582,6 +3602,10 @@ snapshots:
       brace-expansion: 2.0.1
 
   minipass@7.1.2: {}
+
+  mode-watcher@0.4.1(svelte@5.1.15):
+    dependencies:
+      svelte: 5.1.15
 
   mri@1.2.0: {}
 
