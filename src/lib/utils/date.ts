@@ -1,7 +1,7 @@
 import { addDays, format, parseISO, subDays } from 'date-fns';
 import { fromZonedTime } from 'date-fns-tz';
 
-export function formatDateToString(
+export function formatDate(
 	date: Date | string,
 	dateFormat: 'YYYYMMDD' | 'YYYY-MM-DD' = 'YYYYMMDD'
 ): string {

@@ -2,7 +2,7 @@
 	import { createQuery } from '@tanstack/svelte-query';
 	import { gamesByDateQO } from '$api/nba/games-by-date/[date]/utils';
 	import DatePagination from '$components/date-pagination.svelte';
-	import { formatDateToString } from '$utils/date';
+	import { formatDate } from '$utils/date';
 	import { queryParamsState } from 'kit-query-params';
 
 	import Scoreboard from './shared/scoreboard.svelte';
@@ -14,11 +14,9 @@
 		invalidate: ['nba', 'nbaGamesByDate']
 	});
 
-	let date = $derived(
-		formatDateToString(params.date ?? new Date().toISOString().split('T')[0], 'YYYYMMDD')
-	);
+	let date = $derived(params.date ?? new Date().toISOString().split('T')[0]);
 
-	const query = createQuery(() => gamesByDateQO({ date }));
+	const query = createQuery(() => gamesByDateQO({ date: formatDate(date, 'YYYYMMDD') }));
 </script>
 
 <div class="flex flex-col gap-4 py-12">
