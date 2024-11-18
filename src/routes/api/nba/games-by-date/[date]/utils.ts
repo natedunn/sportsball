@@ -67,7 +67,7 @@ export const fetchData = async ({ params }: { params: RouteParams }) => {
 
 export type GamesByDateResponse = Awaited<ReturnType<typeof fetchData>>;
 
-export const gamesByDateQueryOptions = (date: string, _fetch: LoadEvent['fetch']) => {
+export const gamesByDateQO = ({ date }: { date: string }, _fetch: LoadEvent['fetch'] = fetch) => {
 	return queryOptions({
 		queryKey: ['nbaGamesByDate', date],
 		queryFn: async () => {

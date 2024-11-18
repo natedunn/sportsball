@@ -53,6 +53,7 @@
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
 		"@tanstack/svelte-query": "https://pkg.pr.new/@tanstack/svelte-query@28f98f9560ff5878fd839807ead5324a7b9328c4",
+		"@tanstack/svelte-store": "^0.5.7",
 		"date-fns": "^4.1.0",
 		"date-fns-tz": "^3.2.0",
 		"drizzle-orm": "^0.33.0",

@@ -26,6 +26,9 @@ importers:
       '@tanstack/svelte-query':
         specifier: https://pkg.pr.new/@tanstack/svelte-query@28f98f9560ff5878fd839807ead5324a7b9328c4
         version: https://pkg.pr.new/@tanstack/svelte-query@28f98f9560ff5878fd839807ead5324a7b9328c4(svelte@5.1.15)
+      '@tanstack/svelte-store':
+        specifier: ^0.5.7
+        version: 0.5.7(svelte@5.1.15)
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
@@ -968,9 +971,17 @@ packages:
     resolution: {tarball: https://pkg.pr.new/TanStack/query/@tanstack/query-core@28f98f9}
     version: 5.59.17
 
+  '@tanstack/store@0.5.5':
+    resolution: {integrity: sha512-EOSrgdDAJExbvRZEQ/Xhh9iZchXpMN+ga1Bnk8Nmygzs8TfiE6hbzThF+Pr2G19uHL6+DTDTHhJ8VQiOd7l4tA==}
+
   '@tanstack/svelte-query@https://pkg.pr.new/@tanstack/svelte-query@28f98f9560ff5878fd839807ead5324a7b9328c4':
     resolution: {tarball: https://pkg.pr.new/@tanstack/svelte-query@28f98f9560ff5878fd839807ead5324a7b9328c4}
     version: 5.59.17
+    peerDependencies:
+      svelte: ^5.0.0
+
+  '@tanstack/svelte-store@0.5.7':
+    resolution: {integrity: sha512-JhERLXMncVHnLaVv9wj0piH7rVRo4gN2JFBEhOfyxVAG3VIC3+9rGtsJFDDcJUH7Mz15lN1mEmxwf/VOu8qOfg==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -2896,9 +2907,16 @@ snapshots:
 
   '@tanstack/query-core@https://pkg.pr.new/TanStack/query/@tanstack/query-core@28f98f9': {}
 
+  '@tanstack/store@0.5.5': {}
+
   '@tanstack/svelte-query@https://pkg.pr.new/@tanstack/svelte-query@28f98f9560ff5878fd839807ead5324a7b9328c4(svelte@5.1.15)':
     dependencies:
       '@tanstack/query-core': https://pkg.pr.new/TanStack/query/@tanstack/query-core@28f98f9
+      svelte: 5.1.15
+
+  '@tanstack/svelte-store@0.5.7(svelte@5.1.15)':
+    dependencies:
+      '@tanstack/store': 0.5.5
       svelte: 5.1.15
 
   '@tybys/wasm-util@0.9.0':

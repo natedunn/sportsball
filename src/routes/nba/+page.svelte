@@ -1,12 +1,11 @@
 <script lang="ts">
-	import type { GamesByDateResponse } from '../api/nba/games-by-date/[date]/utils';
-
 	import { createQuery } from '@tanstack/svelte-query';
-	import DatePagination from '$lib/components/date-pagination.svelte';
-	import { formatDateToString } from '$lib/utils/date';
+	import { gamesByDateQO } from '$api/nba/games-by-date/[date]/utils';
+	import DatePagination from '$components/date-pagination.svelte';
+	import { formatDateToString } from '$utils/date';
 	import { queryParamsState } from 'kit-query-params';
 
-	import Scoreboard from './_components/scoreboard.svelte';
+	import Scoreboard from './shared/scoreboard.svelte';
 
 	const params = queryParamsState({
 		schema: {
@@ -19,15 +18,7 @@
 		formatDateToString(params.date ?? new Date().toISOString().split('T')[0], 'YYYYMMDD')
 	);
 
-	const query = createQuery(() => ({
-		queryKey: ['nbaGamesByDate', date],
-		queryFn: async () => {
-			return (await fetch(`/api/nba/games-by-date/${date}`).then((res) =>
-				res.json()
-			)) as GamesByDateResponse;
-		},
-		refetchInterval: 10 * 1000
-	}));
+	const query = createQuery(() => gamesByDateQO({ date }));
 </script>
 
 <div class="flex flex-col gap-4 py-12">
