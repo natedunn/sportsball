@@ -12,12 +12,11 @@
 	let { class: className = '', date }: { class?: ClassValue; date: string } = $props();
 
 	let datePickerOpen = $state(false);
+	let buttonClasses = $state(cn(buttonVariants({ variant: 'outline', size: 'sm' })));
 
 	let prevDay = $derived(moveDate(date, 'prev'));
 	let todayDay = $derived(moveDate(date, 'today'));
 	let nextDay = $derived(moveDate(date, 'next'));
-
-	let buttonClasses = cn(buttonVariants({ variant: 'outline', size: 'sm' }));
 
 	let datePickerValue = $derived.by(() => {
 		if (!date || date === formatDate(new Date(), 'YYYY-MM-DD')) {
