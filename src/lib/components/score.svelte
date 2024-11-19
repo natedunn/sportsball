@@ -5,10 +5,8 @@
 	import { cn } from '$lib/utils';
 
 	type Props = {
-		score: {
-			away: number;
-			home: number;
-		};
+		homeScore: number;
+		awayScore: number;
 		gameState: State;
 		classes?: {
 			wrapper?: ClassValue;
@@ -16,53 +14,47 @@
 		};
 	};
 
-	type TeamState = {
-		state: 'active' | 'winner' | 'loser';
-		score: number | null;
-	};
+	type TeamState = 'active' | 'winner' | 'loser';
 
-	let { classes, gameState, score }: Props = $props();
+	let { classes, gameState, homeScore, awayScore }: Props = $props();
 
-	const getTeamState = (homeAway: 'home' | 'away'): TeamState => {
+	const getTeamState = (
+		homeAway: 'home' | 'away',
+		homeScore: number,
+		awayScore: number
+	): TeamState => {
 		if (gameState === 'in' || gameState == 'pre') {
-			return {
-				state: 'active',
-				score: null
-			};
+			return 'active';
 		}
 
 		if (
-			(homeAway === 'home' && score.home > score.away) ||
-			(homeAway === 'away' && score.away > score.home)
+			(homeAway === 'home' && homeScore > awayScore) ||
+			(homeAway === 'away' && awayScore > homeScore)
 		) {
-			return {
-				state: 'winner',
-				score: score[homeAway]
-			};
+			return 'winner';
 		}
-		return {
-			state: 'loser',
-			score: score[homeAway]
-		};
+		return 'loser';
 	};
+
+	let homeState = $derived.by(() => getTeamState('home', homeScore, awayScore));
+	let awayState = $derived.by(() => getTeamState('away', homeScore, awayScore));
 </script>
 
-{#snippet teamScore(homeAway: 'home' | 'away')}
-	{@const team = getTeamState(homeAway)}
+{#snippet teamScore(score: number, state: TeamState)}
 	<div
 		class={cn(
 			'flex items-center gap-2 font-mono text-2xl font-bold sm:text-3xl md:text-4xl',
-			team.state === 'winner' && '',
-			team.state === 'loser' && 'opacity-50',
+			state === 'winner' && '',
+			state === 'loser' && 'opacity-50',
 			classes?.score
 		)}
 	>
-		{team.score}
+		{score}
 	</div>
 {/snippet}
 
 <div class={cn('flex items-center gap-2', classes?.wrapper)}>
-	{@render teamScore('away')}
+	{@render teamScore(awayScore, awayState)}
 	<div class="leading-0 text-xl font-bold opacity-50 sm:text-2xl md:text-3xl">—</div>
-	{@render teamScore('home')}
+	{@render teamScore(homeScore, homeState)}
 </div>

@@ -11,8 +11,8 @@
 
 	let { game }: Props = $props();
 
-	let homeTeam = $state(game.home);
-	let awayTeam = $state(game.away);
+	let homeTeam = $derived(game.home);
+	let awayTeam = $derived(game.away);
 
 	let classes = $state({
 		wrapper: 'p-4 md:min-w-[130px]'
@@ -28,10 +28,8 @@
 		<div>
 			{#if game.state === 'in' || game.state == 'post'}
 				<Score
-					score={{
-						away: Number(awayTeam.score),
-						home: Number(homeTeam.score)
-					}}
+					awayScore={Number(awayTeam.score)}
+					homeScore={Number(homeTeam.score)}
 					gameState={game.state}
 				/>
 			{/if}
