@@ -32,7 +32,7 @@
 </script>
 
 <div class={cn('flex gap-2', className)}>
-	<a class={buttonClasses} href={`/nba?date=${prevDay}`}>
+	<a class={buttonClasses} href={`/nba?date=${prevDay}`} draggable="false">
 		<ArrowLeft class="h-4 w-4" />
 		Previous
 	</a>
@@ -45,11 +45,11 @@
 			datePickerOpen = false;
 		}}
 	/>
-	<a class={buttonClasses} href={`/nba?date=${todayDay}`}>
+	<a class={buttonClasses} href={`/nba?date=${todayDay}`} draggable="false">
 		<ArrowDown class="h-4 w-4" />
 		Today</a
 	>
-	<a class={buttonClasses} href={`/nba?date=${nextDay}`}
+	<a class={buttonClasses} href={`/nba?date=${nextDay}`} draggable="false"
 		>Next
 		<ArrowRight class="h-4 w-4" />
 	</a>
