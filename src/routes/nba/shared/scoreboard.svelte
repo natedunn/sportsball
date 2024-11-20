@@ -4,12 +4,14 @@
 	import Score from '$components/score.svelte';
 	import Card from '$components/ui/card.svelte';
 	import Competitor from '$lib/components/competitor.svelte';
+	import { formatGameDate } from '$utils/date';
 
 	type Props = {
 		game: GamesByDate[0];
+		showInfoLink?: boolean;
 	};
 
-	let { game }: Props = $props();
+	let { game, showInfoLink = false }: Props = $props();
 
 	let homeTeam = $derived(game.home);
 	let awayTeam = $derived(game.away);
@@ -37,16 +39,20 @@
 		<div class="flex items-center justify-center gap-2">
 			{#if !!game.time.detail}
 				<span class="text-muted-foreground">
-					{game.time.detail}
+					{game.state === 'pre' && game.time.start
+						? `Starts ${formatGameDate(new Date(game.time.start), true)}`
+						: game.time.detail}
 				</span>
 			{/if}
-			<span class="text-muted-foreground">|</span>
-			<a
-				href={`/nba/game/${game.id}`}
-				class="inline-flex items-center gap-2 hocus:text-foreground hocus:underline"
-			>
-				<span>Game info</span>
-			</a>
+			{#if showInfoLink}
+				<span class="text-muted-foreground">|</span>
+				<a
+					href={`/nba/game/${game.id}`}
+					class="inline-flex items-center gap-2 hocus:text-foreground hocus:underline"
+				>
+					<span>Game info</span>
+				</a>
+			{/if}
 		</div>
 	</div>
 	{#if homeTeam}
