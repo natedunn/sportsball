@@ -5,15 +5,18 @@ import type { RouteParams } from './$types';
 import { queryOptions } from '@tanstack/svelte-query';
 import nbaConfig from '$config/nba-teams';
 
-export const fetchData = async ({ params }: { params: RouteParams }) => {
-	const data = (await fetch(
-		`https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=${params.date}`,
-		{
-			headers: {
-				'Content-Type': 'application/json'
-			}
+export const fetchData = async ({
+	endpoint,
+	params
+}: {
+	endpoint: string;
+	params: RouteParams;
+}) => {
+	const data = (await fetch(`${endpoint}?dates=${params.date}`, {
+		headers: {
+			'Content-Type': 'application/json'
 		}
-	).then((res) => res.json())) as NbaScoreboardResponse;
+	}).then((res) => res.json())) as NbaScoreboardResponse;
 
 	if (data && data.events) {
 		const games = data.events.map((event) => {
