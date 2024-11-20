@@ -5,18 +5,21 @@
 	import { cn } from '$lib/utils';
 
 	type Props = {
-		class?: ClassValue;
+		classNames?: {
+			wrapper?: ClassValue;
+			inner?: ClassValue;
+		};
 		children?: Snippet;
 	};
 
-	let { class: className = '', children }: Props = $props();
+	let { classNames, children }: Props = $props();
 </script>
 
-<div class="flex gap-2 rounded-xl border border-border bg-muted/30 p-2">
+<div class={cn('flex gap-2 rounded-xl border border-border bg-muted/30 p-2', classNames?.wrapper)}>
 	<div
 		class={cn(
 			'relative flex w-full justify-between gap-2 overflow-hidden rounded-lg border border-border bg-card',
-			className
+			classNames?.inner
 		)}
 	>
 		{@render children?.()}
