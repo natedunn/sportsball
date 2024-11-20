@@ -14,7 +14,7 @@
 		invalidate: ['nba', 'nbaGamesByDate']
 	});
 
-	let date = $derived(params.date ?? new Date().toISOString().split('T')[0]);
+	let date = $derived(params.date ?? formatDate(new Date(), 'YYYY-MM-DD'));
 
 	const query = createQuery(() => gamesByDateQO({ date: formatDate(date, 'YYYYMMDD') }));
 </script>
