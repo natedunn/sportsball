@@ -2,7 +2,7 @@
 	import ArrowRight from 'lucide-svelte/icons/arrow-right';
 </script>
 
-<div>
+<div class="container">
 	<svg
 		aria-hidden="true"
 		class="absolute inset-0 -z-10 h-full w-full stroke-white/20 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
@@ -26,12 +26,14 @@
 			stroke-width={0}
 		/>
 	</svg>
-	<div class="flex h-screen flex-col pt-24">
-		<h1 class="text-pretty text-5xl font-semibold tracking-tight text-white sm:text-7xl">
-			All the Sportsballing, none of the bullshit.
+	<div class="flex h-full flex-col pt-24">
+		<h1 class="text-pretty text-5xl font-semibold tracking-tight text-white sm:text-6xl">
+			All the Sportsballing, <br />none of the bullshit.
 		</h1>
 		<p class="mt-8 text-pretty text-xl font-medium text-gray-400 sm:text-xl/8">
-			Check scores and updates for your favorite leagues like NBA, NFL,{' '}
+			Check scores and updates for your favorite leagues like NBA, <span class="line-through"
+				>NFL</span
+			>,{' '}
 			<span class="line-through">MLB</span>,{' '}
 			<span class="line-through">WNBA</span>, and{' '}
 			<span class="line-through">more</span>.
@@ -41,15 +43,15 @@
 				class="inline-flex items-center gap-2 rounded-lg bg-muted px-4 py-2 text-lg hover:bg-muted/80 hover:underline"
 				href="/nba"
 			>
-				<span>NBA scores</span>
+				<span>NBA</span>
 				<ArrowRight size={16} />
 			</a>
 			<a
-				class="inline-flex items-center gap-2 rounded-lg bg-muted px-4 py-2 text-lg hover:bg-muted/80 hover:underline"
+				class="pointer-events-none inline-flex items-center gap-2 rounded-lg bg-muted px-4 py-2 text-lg text-muted-foreground hover:bg-muted/80 hover:underline"
 				href="/nfl"
 			>
-				<span>NFL scores</span>
-				<ArrowRight size={16} />
+				<span>NFL</span>
+				(Coming soon)
 			</a>
 		</div>
 	</div>
