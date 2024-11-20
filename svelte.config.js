@@ -8,6 +8,8 @@ const config = {
 		adapter: vercel({
 			runtime: 'edge',
 			images: {
+				sizes: [640, 828, 1200, 1920, 3840],
+
 				domains: ['a.espncdn.com']
 			}
 		}),
