@@ -5,6 +5,9 @@
 	import { goto } from '$app/navigation';
 	import { cn } from '$lib/utils';
 	import { formatDate, moveDate } from '$lib/utils/date';
+	import ArrowDown from 'lucide-svelte/icons/arrow-down';
+	import ArrowLeft from 'lucide-svelte/icons/arrow-left';
+	import ArrowRight from 'lucide-svelte/icons/arrow-right';
 
 	import { buttonVariants } from './ui/button';
 	import DatePicker from './ui/date-picker.svelte';
@@ -12,7 +15,9 @@
 	let { class: className = '', date }: { class?: ClassValue; date: string } = $props();
 
 	let datePickerOpen = $state(false);
-	let buttonClasses = $state(cn(buttonVariants({ variant: 'outline', size: 'sm' })));
+	let buttonClasses = $state(
+		cn(buttonVariants({ variant: 'outline', size: 'sm' }), 'flex items-center gap-2')
+	);
 
 	let prevDay = $derived(moveDate(date, 'prev'));
 	let todayDay = $derived(moveDate(date, 'today'));
@@ -27,7 +32,10 @@
 </script>
 
 <div class={cn('flex gap-2', className)}>
-	<a class={buttonClasses} href={`/nba?date=${prevDay}`}>Previous</a>
+	<a class={buttonClasses} href={`/nba?date=${prevDay}`}>
+		<ArrowLeft class="h-4 w-4" />
+		Previous
+	</a>
 	<DatePicker
 		bind:isOpen={datePickerOpen}
 		value={datePickerValue}
@@ -37,6 +45,12 @@
 			datePickerOpen = false;
 		}}
 	/>
-	<a class={buttonClasses} href={`/nba?date=${todayDay}`}>Today</a>
-	<a class={buttonClasses} href={`/nba?date=${nextDay}`}>Next</a>
+	<a class={buttonClasses} href={`/nba?date=${todayDay}`}>
+		<ArrowDown class="h-4 w-4" />
+		Today</a
+	>
+	<a class={buttonClasses} href={`/nba?date=${nextDay}`}
+		>Next
+		<ArrowRight class="h-4 w-4" />
+	</a>
 </div>
