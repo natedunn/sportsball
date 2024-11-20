@@ -35,7 +35,7 @@
 			</div>
 		</div>
 	</nav>
-	<main class="container">
+	<main>
 		{@render children()}
 	</main>
 </QueryClientProvider>
